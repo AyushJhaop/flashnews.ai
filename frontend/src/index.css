@@ -1,60 +1,97 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 :root {
   --font-sans: 'Outfit', sans-serif;
 
-  --color-background: hsl(220 25% 8%);
-  --color-foreground: hsl(0 0% 98%);
-  /* Bright white */
+  /* Premium Dark Theme Palette */
+  --color-background: hsl(222 47% 11%);
+  /* Deep Rich Blue/Black */
+  --color-foreground: hsl(210 40% 98%);
 
-  --color-card: hsl(220 20% 14%);
-  --color-card-foreground: hsl(0 0% 95%);
+  --color-card: hsl(222 47% 13%);
+  --color-card-foreground: hsl(210 40% 98%);
 
-  --color-popover: hsl(220 25% 8%);
-  --color-popover-foreground: hsl(0 0% 90%);
+  --color-popover: hsl(222 47% 11%);
+  --color-popover-foreground: hsl(210 40% 98%);
 
-  --color-primary: hsl(217 91% 65%);
-  /* Very bright blue */
-  --color-primary-foreground: hsl(0 0% 100%);
+  --color-primary: hsl(217 91% 60%);
+  /* Vibrant Blue */
+  --color-primary-foreground: hsl(222 47% 11%);
 
-  --color-secondary: hsl(220 15% 25%);
-  --color-secondary-foreground: hsl(0 0% 95%);
+  --color-secondary: hsl(217 32% 17%);
+  --color-secondary-foreground: hsl(210 40% 98%);
 
-  --color-muted: hsl(220 15% 25%);
-  --color-muted-foreground: hsl(0 0% 75%);
-  /* Much lighter gray */
+  --color-muted: hsl(217 32% 17%);
+  --color-muted-foreground: hsl(215 20% 65%);
 
-  --color-accent: hsl(217 91% 65%);
-  --color-accent-foreground: hsl(0 0% 100%);
+  --color-accent: hsl(217 91% 60%);
+  --color-accent-foreground: hsl(222 47% 11%);
 
-  --color-destructive: hsl(0 70% 50%);
-  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(210 40% 98%);
 
-  --color-border: hsl(220 15% 30%);
-  --color-input: hsl(220 15% 25%);
-  --color-ring: hsl(217 91% 65%);
+  --color-border: hsl(217 32% 20%);
+  --color-input: hsl(217 32% 20%);
+  --color-ring: hsl(217 91% 60%);
 
   --radius: 0.75rem;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-muted);
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Button Standards */
+.btn-primary {
+  @apply bg-primary text-white font-bold px-6 py-2.5 rounded-lg border border-primary/50 hover:bg-primary/90 transition-all shadow-[0_0_20px_-5px_rgba(59, 130, 246, 0.6)] hover:shadow-[0_0_30px_-5px_rgba(59, 130, 246, 0.8)] active:scale-95 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply bg-secondary/80 text-white font-bold px-6 py-2.5 rounded-lg border border-white/20 hover:border-white/40 hover:bg-secondary transition-all active:scale-95 shadow-lg;
+}
+
+.btn-ghost {
+  @apply bg-transparent text-muted-foreground hover:text-foreground font-medium px-4 py-2 rounded-lg border border-transparent hover:border-white/10 hover:bg-white/5 transition-all;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary font-bold px-6 py-2.5 rounded-lg hover:bg-primary hover:text-white transition-all shadow-[0_0_15px_-5px_rgba(59, 130, 246, 0.4)];
+}
+
+.input-field {
+  @apply w-full bg-secondary/50 border border-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-muted-foreground/50;
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.4));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Utilities */

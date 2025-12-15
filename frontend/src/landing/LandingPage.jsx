@@ -1,26 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Zap, TrendingUp, Cpu, Globe, ArrowRight, Shield, Activity, BarChart2 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { ArrowRight, CheckCircle2, Zap, Globe, Cpu, Activity, Search } from 'lucide-react';
 
 const LandingPage = () => {
     return (
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+        <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 overflow-x-hidden">
+
+            {/* Navbar */}
+            <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5">
                 <div className="container mx-auto px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="bg-primary p-2 rounded-xl">
-                            <Zap className="w-6 h-6 text-primary-foreground fill-current" />
+                        <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+                            <Zap className="w-6 h-6 text-primary fill-current" />
                         </div>
                         <span className="text-2xl font-bold tracking-tight">NewsFlash<span className="text-primary">.ai</span></span>
                     </div>
+                    <div className="hidden md:flex items-center gap-8">
+                        <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Features</a>
+                        <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Testimonials</a>
+                        <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Pricing</a>
+                    </div>
                     <div className="flex items-center gap-4">
-                        <Link to="/login" className="px-6 py-2.5 text-sm font-semibold hover:text-primary transition-colors">
-                            Log In
-                        </Link>
-                        <Link to="/signup" className="px-6 py-2.5 bg-primary text-primary-foreground text-sm font-bold rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                        <Link to="/login" className="text-sm font-bold hover:text-primary transition-colors">Log In</Link>
+                        <Link to="/signup" className="px-5 py-2.5 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors">
                             Sign Up
                         </Link>
                     </div>
@@ -28,195 +31,243 @@ const LandingPage = () => {
             </nav>
 
             {/* Hero Section */}
-            <section className="relative pt-40 pb-32 overflow-hidden">
-                {/* Abstract Background Blobs */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+            <section className="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+                {/* Background Blobs */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
+                <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
 
-                <div className="container mx-auto px-6 text-center z-10 relative">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/30 border border-white/10 mb-8">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center max-w-4xl mx-auto mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm"
+                        >
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                            <span className="text-sm font-medium text-primary-foreground/80">Live Market Data Active</span>
-                        </div>
-                        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent">
-                            Trade at the <br /> Speed of Light
+                            <span className="text-sm font-medium text-green-400">v2.0 Now Live: Real-time Sentiment Engine</span>
+                        </motion.div>
+
+                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
+                            Trade at the <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white/50">Speed of Light</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-                            Stop Reacting. Start Anticipating. <br />
-                            The only AI-powered news aggregator that delivers sentiment analysis with millisecond latency.
+
+                        <p className="text-xl text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                            Stop reacting to old news. Expect the unexpected with the only AI-powered aggregator that delivers sentiment analysis in <span className="text-foreground font-medium">milliseconds</span>.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link to="/signup" className="h-14 px-8 rounded-full bg-primary text-white font-bold text-lg flex items-center gap-2 hover:scale-105 transition-transform shadow-xl shadow-primary/20">
-                                Get Started Free <ArrowRight className="w-5 h-5" />
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                            <Link to="/signup" className="btn-primary flex items-center gap-2 justify-center">
+                                Start Free Trial <ArrowRight className="w-4 h-4" />
                             </Link>
-                            <a href="#features" className="h-14 px-8 rounded-full bg-secondary text-white font-semibold text-lg flex items-center gap-2 hover:bg-secondary/80 transition-colors">
-                                Explore Features
-                            </a>
+                            <Link to="/login" className="btn-secondary justify-center">
+                                Live Demo
+                            </Link>
                         </div>
-                    </motion.div>
-                </div>
-            </section>
 
-            {/* Stats/Problem Section */}
-            <section className="py-24 bg-card/30 border-y border-border">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                        <div className="p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5">
-                            <div className="text-5xl font-black text-primary mb-2">15m</div>
-                            <div className="text-lg font-bold mb-4">Latency Removed</div>
-                            <p className="text-muted-foreground text-sm">Traditional news takes minutes. We take milliseconds. Don't be the last to know.</p>
-                        </div>
-                        <div className="p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5">
-                            <div className="text-5xl font-black text-primary mb-2">24/7</div>
-                            <div className="text-lg font-bold mb-4">AI Sentiment</div>
-                            <p className="text-muted-foreground text-sm">Our Neural Networks read the subtext so you don't have to guess if news is Bullish or Bearish.</p>
-                        </div>
-                        <div className="p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5">
-                            <div className="text-5xl font-black text-primary mb-2">10k+</div>
-                            <div className="text-lg font-bold mb-4">Sources Scanned</div>
-                            <p className="text-muted-foreground text-sm">From major outlets to niche blogs, we filter the noise and deliver the signal.</p>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Feature Showcase */}
-            <section id="features" className="py-32 relative">
+            {/* Stats Section with Animation */}
+            <section className="py-20 border-y border-white/5 bg-white/[0.02]">
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">Why NewsFlash?</h2>
-                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Complex problems require elegant solutions. We broke down the barriers to institutional-grade data.</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-32">
-                        <div>
-                            <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
-                                <Cpu className="w-8 h-8 text-blue-500" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-4">Cognitive Offloading</h3>
-                            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                                Information overload causes "Analysis Paralysis". Our system reads millions of words so you can focus on a single number: The Sentiment Score.
-                            </p>
-                            <ul className="space-y-4">
-                                {['Natural Language Processing', 'Contextual Understanding', 'Instant Classification'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                                            <ArrowRight className="w-3 h-3 text-green-500" />
-                                        </div>
-                                        <span className="font-medium">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="h-[400px] bg-gradient-to-tr from-blue-500/10 to-purple-500/10 rounded-3xl border border-white/10 relative overflow-hidden group">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                {/* Abstract Visualization of Processing */}
-                                <div className="w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-                                <div className="relative z-10 bg-card border border-border p-6 rounded-xl shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <div className="w-10 h-10 rounded-full bg-secondary"></div>
-                                        <div className="h-2 w-32 bg-secondary rounded"></div>
-                                    </div>
-                                    <div className="h-2 w-48 bg-secondary/50 rounded mb-2"></div>
-                                    <div className="h-2 w-40 bg-secondary/50 rounded"></div>
-                                    <div className="mt-4 flex gap-2">
-                                        <span className="px-2 py-1 bg-green-500/20 text-green-500 text-xs rounded font-bold">POSITIVE</span>
-                                        <span className="px-2 py-1 bg-secondary text-xs rounded font-bold">98% CONFIDENCE</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                        <div className="order-2 md:order-1 h-[400px] bg-gradient-to-tr from-green-500/10 to-emerald-500/10 rounded-3xl border border-white/10 relative overflow-hidden group">
-                            {/* Abstract Chart */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Activity className="w-48 h-48 text-green-500/20 group-hover:scale-110 transition-transform duration-700" />
-                            </div>
-                        </div>
-                        <div className="order-1 md:order-2">
-                            <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6">
-                                <Globe className="w-8 h-8 text-green-500" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-4">The Latency Solution</h3>
-                            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                                By the time you see it on a website, it's too late. Our WebSocket infrastructure pushes updates directly to your dashboard the moment they happen.
-                            </p>
-                            <ul className="space-y-4">
-                                {['Zero-Poll Architecture', 'Global CDN Edge', '<50ms Delivery Time'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                                            <ArrowRight className="w-3 h-3 text-green-500" />
-                                        </div>
-                                        <span className="font-medium">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonials */}
-            <section className="py-24 bg-card/50">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center mb-16">Trusted by Quants</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/5">
                         {[
-                            { name: "Alex T.", role: "Day Trader", text: "I used to refresh cnbc every 5 minutes. Now I just watch the NewsFlash gauge. It pays for itself." },
-                            { name: "Sarah Jenkins", role: "Hedge Fund Analyst", text: "The sentiment analysis is surprisingly accurate. It catches nuances that simple keyword scrapers miss." },
-                            { name: "Michael Chen", role: "Crypto Investor", text: "Latency is everything in my field. This is the fastest aggregator I've found." }
-                        ].map((t, i) => (
-                            <div key={i} className="p-8 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors">
-                                <p className="text-lg mb-6 italic text-muted-foreground">"{t.text}"</p>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-gray-700 to-gray-600"></div>
-                                    <div>
-                                        <div className="font-bold">{t.name}</div>
-                                        <div className="text-xs text-primary">{t.role}</div>
-                                    </div>
-                                </div>
-                            </div>
+                            { value: '15ms', label: 'Ultra-Low Latency' },
+                            { value: '99.9%', label: 'Sentiment Accuracy' },
+                            { value: '10k+', label: 'Global Sources' }
+                        ].map((stat, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.2 }}
+                                className="px-8 py-4"
+                            >
+                                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary/50 mb-2">{stat.value}</div>
+                                <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground">{stat.label}</div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* FAQ */}
-            <section className="py-24">
-                <div className="container mx-auto px-6 max-w-3xl">
-                    <h2 className="text-4xl font-bold text-center mb-12">Common Questions</h2>
-                    <div className="space-y-4">
+            {/* How It Works Section */}
+            <section className="py-32 relative">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-24"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6">How It Works</h2>
+                        <p className="text-muted-foreground max-w-xl mx-auto">From raw data to actionable insight in three steps.</p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent -z-10"></div>
+
                         {[
-                            { q: "Is the data real-time?", a: "Yes. We use WebSockets to push data instantly. No refreshing required." },
-                            { q: "How is sentiment calculated?", a: "We use a proprietary Transformer-based NLP model tuned specifically for financial markets." },
-                            { q: "Can I customize the watchlist?", a: "Absolutely. You can add any stock ticker to your personal dashboard." }
-                        ].map((faq, i) => (
-                            <div key={i} className="p-6 rounded-xl bg-secondary/20 border border-white/5">
-                                <h3 className="text-xl font-bold mb-2">{faq.q}</h3>
-                                <p className="text-muted-foreground">{faq.a}</p>
+                            { icon: Search, title: "Scan", desc: "We monitor 10,000+ sources globally in real-time." },
+                            { icon: Cpu, title: "Analyze", desc: "Our Neural Network processes context & sentiment instantly." },
+                            { icon: Zap, title: "Deliver", desc: "Actionable data pushed to your dashboard via WebSockets." }
+                        ].map((step, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.2 }}
+                                viewport={{ once: true }}
+                                className="relative flex flex-col items-center text-center group"
+                            >
+                                <div className="w-24 h-24 rounded-2xl bg-card border border-white/5 flex items-center justify-center mb-8 shadow-2xl shadow-black/50 group-hover:border-primary/50 transition-colors z-10 glass-card">
+                                    <step.icon className="w-10 h-10 text-primary" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-4">{step.title}</h3>
+                                <p className="text-muted-foreground text-sm max-w-[250px]">{step.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Feature Showcase */}
+            <section id="features" className="py-32 relative bg-card/20">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="mb-24"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 max-w-2xl">Why NewsFlash is Different</h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl">Complex problems require elegant solutions. We broke down the barriers to institutional-grade data.</p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
+                        <motion.div
+                            initial={{ x: -50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="w-14 h-14 bg-blue-500/10 rounded-lg flex items-center justify-center mb-8 border border-blue-500/20">
+                                <Cpu className="w-7 h-7 text-blue-500" />
                             </div>
+                            <h3 className="text-3xl font-bold mb-6">Cognitive Offloading</h3>
+                            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                                Information overload causes "Analysis Paralysis". Our system reads millions of words so you can focus on a single number: The Sentiment Score.
+                            </p>
+                            <ul className="space-y-5">
+                                {['Natural Language Processing', 'Contextual Understanding', 'Instant Classification'].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4">
+                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                            <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+                                        </div>
+                                        <span className="font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                        <motion.div
+                            initial={{ x: 50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="relative"
+                        >
+                            <div className="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full opacity-30"></div>
+                            <div className="glass-card rounded-2xl p-8 border border-white/10 relative">
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+                                            <Zap className="w-5 h-5 text-blue-500" />
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Latest Signal</div>
+                                            <div className="text-xs text-muted-foreground">Just now</div>
+                                        </div>
+                                    </div>
+                                    <div className="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-bold border border-green-500/20">
+                                        STRONG BUY
+                                    </div>
+                                </div>
+                                <p className="text-lg font-medium mb-4">"Tesla extends partnership with major battery supplier, securing production for Q4."</p>
+                                <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div className="h-full w-[85%] bg-green-500"></div>
+                                </div>
+                                <div className="flex justify-between mt-2 text-xs font-mono text-muted-foreground">
+                                    <span>Sentiment Score</span>
+                                    <span>85/100</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials Section */}
+            <section id="testimonials" className="py-32 relative">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-24"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6">Trusted by Pros</h2>
+                        <p className="text-muted-foreground max-w-xl mx-auto">See what elite traders are saying.</p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { name: "Sarah K.", role: "Forex Trader", quote: "NewsFlash completely changed how I trade news events. The speed is unmatched." },
+                            { name: "Michael Check", role: "Crypto Analyst", quote: "The sentiment analysis is scarily accurate. It caught the last dip before it happened." },
+                            { name: "Jinan B.", role: "Day Trader", quote: "Finally, a tool that cuts through the noise. I can't imagine trading without it now." }
+                        ].map((t, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                                className="glass-card p-8 rounded-2xl border border-white/10 hover:border-primary/30 transition-colors"
+                            >
+                                <div className="flex items-center gap-1 mb-4 text-yellow-500">
+                                    {[1, 2, 3, 4, 5].map(n => <svg key={n} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                                </div>
+                                <p className="text-lg font-medium mb-6 leading-relaxed">"{t.quote}"</p>
+                                <div>
+                                    <div className="font-bold">{t.name}</div>
+                                    <div className="text-sm text-muted-foreground">{t.role}</div>
+                                </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="py-12 border-t border-border bg-background">
-                <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-                    <div className="flex items-center gap-2 mb-4 md:mb-0">
-                        <div className="bg-primary p-1.5 rounded-lg">
-                            <Zap className="w-5 h-5 text-primary-foreground fill-current" />
+            <footer className="py-20 border-t border-white/5 bg-background">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div className="flex items-center gap-2">
+                            <div className="bg-primary/10 p-2 rounded-lg border border-primary/20">
+                                <Zap className="w-5 h-5 text-primary fill-current" />
+                            </div>
+                            <span className="text-xl font-bold tracking-tight">NewsFlash<span className="text-primary">.ai</span></span>
                         </div>
-                        <span className="text-xl font-bold tracking-tight">NewsFlash<span className="text-primary">.ai</span></span>
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                        &copy; 2025 NewsFlash AI. All rights reserved.
+                        <div className="text-muted-foreground text-sm">
+                            &copy; 2024 NewsFlash AI Inc. All rights reserved.
+                        </div>
+                        <div className="flex gap-8 text-sm font-medium text-muted-foreground">
+                            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                            <a href="#" className="hover:text-white transition-colors">Terms</a>
+                            <a href="#" className="hover:text-white transition-colors">Contact</a>
+                        </div>
                     </div>
                 </div>
             </footer>
