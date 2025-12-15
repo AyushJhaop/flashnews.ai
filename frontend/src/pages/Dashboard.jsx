@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import { useNavigate } from 'react-router-dom';
-import { Zap, LayoutDashboard, Settings, LogOut, LineChart, PieChart } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Zap, LayoutDashboard, LogOut, PieChart } from 'lucide-react';
 import { LineChart as ReLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 import LiveTicker from '../components/LiveTicker';
@@ -89,12 +89,6 @@ const Dashboard = () => {
                     <nav className="hidden md:flex items-center gap-6">
                         <button className="text-sm font-medium text-primary flex items-center gap-2 bg-primary/10 px-3 py-1 rounded-full">
                             <LayoutDashboard className="w-4 h-4" /> Dashboard
-                        </button>
-                        <button className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                            <LineChart className="w-4 h-4" /> Analytics
-                        </button>
-                        <button className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                            <Settings className="w-4 h-4" /> Settings
                         </button>
                     </nav>
                     <div className="flex items-center gap-3">

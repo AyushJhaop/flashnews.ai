@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
-@theme {
+:root {
   --font-sans: 'Outfit', sans-serif;
 
   --color-background: hsl(220 25% 8%);
@@ -81,14 +81,15 @@
   }
 }
 
-@utility scrolling-ticker {
+/* Custom utility classes */
+.scrolling-ticker {
   animation: scroll-left 40s linear infinite;
 }
 
-@utility scrolling-ticker:hover {
+.scrolling-ticker:hover {
   animation-play-state: paused;
 }
 
-@utility gauge-needle {
+.gauge-needle {
   transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
